@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://IvanArsy.github.io/CardioMind/",
+  "homepage": ".",
   "scripts": {
     "prestart": "npm install --omit=dev && npm run build",
     "dev": "vite",
