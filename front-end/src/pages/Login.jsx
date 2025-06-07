@@ -87,32 +87,25 @@ function Login() {
         password: formData.password,
       });
 
-      const { uid, userToken, message, status } = response.data;
+      const { uid, userToken, message, status, displayName, profileImage } = response.data;
 
       console.log("Login berhasil:", message);
       console.log("UID:", uid);
       console.log("Token:", userToken);
-      try {
-        console.log("profileResult :")
-        const profileResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profile`, {
-          credentials: "include",
-        });
-        const profileResult = await profileResponse.json();
+  
+        console.log("profileResult :");
+        
 
-        if (profileResponse.ok) {
-          localStorage.setItem("profileName", profileResult.user.displayName || '');
-          localStorage.setItem("profileImage", (!profileResult.user.profileImage)
+        
+          localStorage.setItem("profileName", displayName);
+          localStorage.setItem("profileImage", (!profileImage)
                                                                     ? ''
-                                                                    : (profileResult.user.profileImage.startsWith('http')
-                                                                        ? profileResult.user.profileImage
-                                                                        : "data:image/jpeg;base64," + profileResult.user.profileImage) || '');
+                                                                    : (profileImage.startsWith('http')
+                                                                        ? profileImage
+                                                                        : "data:image/jpeg;base64," + profileImage) || '');
 
-        } else {
-          console.log("Username : ", profileResult.user.displayName)
-        }
-      } catch (profileError) {
-        console.error("Error mengambil profil:", profileError);
-      }
+        
+      
 
       // Simpan token ke localStorage/sessionStorage kalau perlu
       localStorage.setItem("token", userToken);
