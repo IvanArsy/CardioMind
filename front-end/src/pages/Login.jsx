@@ -112,8 +112,8 @@ function Login() {
         }
       } catch (profileError) {
         console.error("Error mengambil profil:", profileError);
-        localStorage.setItem("profileName", user.displayName || '');
-        localStorage.setItem("profileImage", user.photoURL || '');
+        localStorage.setItem("profileName", displayName || ''); 
+        localStorage.setItem("profileImage", profileImage || '');
       }
 
       // Simpan token ke localStorage/sessionStorage kalau perlu
