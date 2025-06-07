@@ -34,7 +34,7 @@ export default function AdminUser() {
     // Tambahkan fungsi fetchUsers yang hilang
     const fetchUsers = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URLCKEND_URL}/api/admin/usersDetail`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/usersDetail`, {
                 method: "GET",
                 credentials: "include"
             });
